@@ -12,6 +12,7 @@ class Category {
       Category(_toInt(category['id']), category['code'], category['description'], category['isFederal'], category['organization_id'] );
 
   static _toInt(id) => id is int ? id : int.parse(id);
+  Map toJson() => {'id': id, 'code': code, 'description': description, 'isFederal': isFederal, 'organization_id': organization_id};
 
 }
 //  int getId(){
