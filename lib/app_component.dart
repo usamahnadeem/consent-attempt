@@ -3,7 +3,8 @@ import 'package:angular_components/angular_components.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:untitled2/_models/category.dart';
 import 'package:untitled2/_models/code_system.dart';
-
+import 'package:untitled2/_models/CodedConcept.dart';
+import 'package:untitled2/_services/codedConcept_service.dart';
 import 'package:angular/angular.dart';
 import 'package:untitled2/_services/category_service.dart';
 import 'package:untitled2/_services/code_system.service.dart';
@@ -34,20 +35,31 @@ import 'package:untitled2/_services/code_system.service.dart';
 class AppComponent implements OnInit {
   final CategoryService _categoryService;
   final CodeSystemService _codeSystemService;
+  final CodedConceptService _codedConceptService;
+
   final List<String> tabLabels = ['Value Sets', 'About'];
   List<Category> _categories = [];
   List<CodeSystem> _codeSystems = [];
+  List<CodedConcept> codedConcepts = [];
+  List<CodedConcept> bayStateCodedConcepts = [];
 
   AppComponent(
       this._categoryService,
-      this._codeSystemService
+      this._codeSystemService,
+      this._codedConceptService
       );
 
   @override
   void ngOnInit() {
-//    _getCategories();
-//    _getCodeSystemsById(1);
+    _getCategories();
+    _getCodedConcepts();
+    _getByOrganizationId(1);
   }
+
+  Future<void> _getCodedConcepts() async {
+    codedConcepts = await _codedConceptService.getAll();
+  }
+
   Future<void> _getCategories() async {
       _categories = await _categoryService.getAll();
   }
@@ -75,6 +87,13 @@ class AppComponent implements OnInit {
     _codeSystems.add(newCs);
   }
 
+  Future<void> _getByOrganizationId(id) async{
+    List<CodedConcept> ccS = await _codedConceptService.getByOrganizationId(id);
+    ccS.forEach((f) =>
+      this.bayStateCodedConcepts.add(f)
+    );
+  }
+
   Future<void> newCat(cat) async{
     await _categoryService.save(cat);
     return;
@@ -94,7 +113,6 @@ class AppComponent implements OnInit {
     this.newCat(myCat);
   }
 
-  //SETTERS AND GETTERS
 
   List<Category> get categories => _categories;
 
@@ -106,6 +124,15 @@ class AppComponent implements OnInit {
   set codeSystems(List<CodeSystem> value) {
     _codeSystems = value;
   }
-}
 
+  Future<void> newCodedConcept(codedConcept) async{
+    await _codedConceptService.save(codedConcept);
+    return;
+  }
+
+  void mockNewCodedConcept(){
+    CodedConcept myCodedConcept = new CodedConcept(1, "123", "Hello, from Coded Concept", 1, 7 );
+    this.newCodedConcept(myCodedConcept);
+  }
+}
 
