@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart';
-import 'package:untitled2/_models/code_system.dart';
-import 'package:untitled2/_models/code_system_update_oid_request.dart';
-import 'package:untitled2/_models/code_system_update_display_request.dart';
+import 'package:vsm/_models/code_system.dart';
+import 'package:vsm/_models/code_system_update_oid_request.dart';
+import 'package:vsm/_models/code_system_update_display_request.dart';
 
 class CodeSystemService {
   static final _headers = {'Content-Type': 'application/json'};

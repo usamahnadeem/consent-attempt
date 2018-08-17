@@ -8,11 +8,13 @@
 <div class="top-tabs-row">
     <material-tab-strip
             class="top-level-tabs"
-            [tabLabels]="tabLabels"
-    ></material-tab-strip>
+            [tabLabels]="tabLabels">
+            <!--(tabChange)="onTabChange($event)"-->
+    </material-tab-strip>
     <div>
         <h1>Welcome, user</h1>
         <p>users_role</p>
     </div>
 </div>
-<value-sets></value-sets>
+<value-sets *ngIf="currentPage == 'valueSets'"></value-sets>
+<about-page *ngIf="currentPage == 'about'"></about-page>

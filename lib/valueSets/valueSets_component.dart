@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'package:angular_components/angular_components.dart';
 import 'package:angular_forms/angular_forms.dart';
-import 'package:untitled2/_models/category.dart';
-import 'package:untitled2/_models/code_system.dart';
-import 'package:untitled2/_models/CodedConcept.dart';
-import 'package:untitled2/_services/codedConcept_service.dart';
+import 'package:vsm/_models/category.dart';
+import 'package:vsm/_models/code_system.dart';
+import 'package:vsm/_models/CodedConcept.dart';
+import 'package:vsm/_services/codedConcept_service.dart';
 import 'package:angular/angular.dart';
-import 'package:untitled2/_services/category_service.dart';
-import 'package:untitled2/_services/code_system.service.dart';
+import 'package:vsm/_services/category_service.dart';
+import 'package:vsm/_services/code_system.service.dart';
 
 
 // AngularDart info: https://webdev.dartlang.org/angular
@@ -15,8 +15,8 @@ import 'package:untitled2/_services/code_system.service.dart';
 
 @Component(
   selector: 'value-sets',
-  styleUrls: ['valueSets_component.css'],
-  templateUrl: './valueSets_component.html',
+  styleUrls: ['about_component.css'],
+  templateUrl: './about_component.html',
     directives: [
       materialInputDirectives,
       MaterialCheckboxComponent,
@@ -50,9 +50,10 @@ class ValueSetsComponent implements OnInit {
 
   @override
   void ngOnInit() {
-//    _getCategories();
-//    _getCodedConcepts();
-//    _getByOrganizationId(1);
+    _getCategories();
+    _getCodedConcepts();
+    _getByOrganizationId(1);
+    _getCodeSystemsById(1);
   }
 
   Future<void> _getCodedConcepts() async {

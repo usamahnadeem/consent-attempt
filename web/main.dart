@@ -1,5 +1,5 @@
 import 'package:angular/angular.dart';
-import 'package:untitled2/app_component.template.dart' as ng;
+import 'package:vsm/app_component.template.dart' as ng;
 import 'package:http/browser_client.dart';
 import 'package:http/http.dart';
 import 'main.template.dart' as self;

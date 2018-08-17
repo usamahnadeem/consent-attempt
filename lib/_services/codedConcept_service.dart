@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:angular/angular.dart';
 import 'package:http/http.dart';
-import 'package:untitled2/_models/CodedConcept.dart';
+import 'package:vsm/_models/CodedConcept.dart';
 
 @Injectable()
 class CodedConceptService {

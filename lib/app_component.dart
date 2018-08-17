@@ -1,14 +1,15 @@
 import 'dart:async';
 import 'package:angular_components/angular_components.dart';
 import 'package:angular_forms/angular_forms.dart';
-import 'package:untitled2/_models/category.dart';
-import 'package:untitled2/_models/code_system.dart';
-import 'package:untitled2/_models/CodedConcept.dart';
-import 'package:untitled2/_services/codedConcept_service.dart';
+import 'package:vsm/_models/category.dart';
+import 'package:vsm/_models/code_system.dart';
+import 'package:vsm/_models/CodedConcept.dart';
+import 'package:vsm/_services/codedConcept_service.dart';
 import 'package:angular/angular.dart';
-import 'package:untitled2/_services/category_service.dart';
-import 'package:untitled2/_services/code_system.service.dart';
-import 'package:untitled2/valueSets/valueSets_component.dart';
+import 'package:vsm/_services/category_service.dart';
+import 'package:vsm/_services/code_system.service.dart';
+import 'package:vsm/about/about_component.dart';
+import 'package:vsm/valueSets/valueSets_component.dart';
 
 
 // AngularDart info: https://webdev.dartlang.org/angular
@@ -30,7 +31,8 @@ import 'package:untitled2/valueSets/valueSets_component.dart';
       NgIf,
       coreDirectives,
       formDirectives,
-      ValueSetsComponent
+      ValueSetsComponent,
+      AboutComponent
     ],
   providers: [CategoryService, CodeSystemService, CodedConceptService]
 )
@@ -44,6 +46,8 @@ class AppComponent implements OnInit {
   List<CodeSystem> _codeSystems = [];
   List<CodedConcept> codedConcepts = [];
   List<CodedConcept> bayStateCodedConcepts = [];
+  String currentPage;
+  List<String> pages = ["valueSets", "about"];
 
   AppComponent(
       this._categoryService,
@@ -53,9 +57,10 @@ class AppComponent implements OnInit {
 
   @override
   void ngOnInit() {
-//    _getCategories();
-//    _getCodedConcepts();
-//    _getByOrganizationId(1);
+    _getCategories();
+    _getCodedConcepts();
+    _getByOrganizationId(1);
+    _getCodeSystemsById(1);
   }
 
   Future<void> _getCodedConcepts() async {
@@ -78,6 +83,11 @@ class AppComponent implements OnInit {
   void mockUpdateCsOid(){
     _updateCodeSystemOid(1, "Sean Updated the oid of number 1 to this new long string");
   }
+
+//  void onTabChange(TabChangeEvent tab){
+//    print(tab.newIndex);
+//    //this.currentPage = this.pages[tab.newIndex];
+//  }
 
   Future<void> _updateCodeSystemDisplayName(int id, String newCodeSystemDisplayName) async {
     CodeSystem newCs = await _codeSystemService.updateDisplayName(id, newCodeSystemDisplayName);

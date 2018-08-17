@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart';
-import 'package:untitled2/_models/category.dart';
+import 'package:vsm/_models/category.dart';
 
 
 class CategoryService {
