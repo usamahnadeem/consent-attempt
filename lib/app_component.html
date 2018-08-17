@@ -3,6 +3,15 @@
 <ul>
     <li *ngFor="let category of categories">{{category.id}}</li>
 </ul>
-<button (click)="mockNewCat();">Test Post</button>
+<button (click)="mockNewCat();">Test Post for Categories</button>
 
+<ul>
+    <li *ngFor="let codedConcept of codedConcepts">{{codedConcept.description}}</li>
+</ul>
+BAYSTATE CODED CONCEPTS:
+<button (click)="mockNewCodedConcept();">Test Post for Coded Concepts</button>
+
+<ul>
+    <li *ngFor="let codedConcept of bayStateCodedConcepts">{{codedConcept.description}}</li>
+</ul>
 
