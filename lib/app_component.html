@@ -1,8 +1,17 @@
-<h1>Consent to Share</h1>
-<h3>Categories:</h3>
-<ul>
-    <li *ngFor="let category of categories">{{category.id}}</li>
-</ul>
-<button (click)="mockNewCat();">Test Post</button>
+<header class="material-header shadow">
+    <div class="material-header-row">
+        <span class="material-header-title">Value Set Manager</span>
+        <img src="images/consent2share.png" class="consent2share-logo">
+    </div>
+</header>
 
-
+<div class="top-tabs-row">
+    <material-tab-strip
+            class="top-level-tabs"
+            [tabLabels]="tabLabels"
+    ></material-tab-strip>
+    <div>
+        <h1>Welcome, user</h1>
+        <p>users_role</p>
+    </div>
+</div>

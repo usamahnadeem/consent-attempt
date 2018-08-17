@@ -9,4 +9,6 @@ body {
 
 * {
   font-family: Roboto, Helvetica, Arial, sans-serif;
+  margin: 0 auto;
+  --main-blue: rgb(25, 119, 186);
 }
