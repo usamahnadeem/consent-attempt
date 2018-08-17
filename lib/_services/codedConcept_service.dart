@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:angular/angular.dart';
 import 'package:http/http.dart';
 import 'package:untitled2/_models/CodedConcept.dart';
 
+@Injectable()
 class CodedConceptService {
   static final _headers = {'Content-Type': 'application/json'};
   dynamic _extractData(Response resp) => json.decode(resp.body);

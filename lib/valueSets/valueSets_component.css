@@ -25,12 +25,12 @@
 .top-tabs-row {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     float: left;
 }
 
 .top-level-tabs {
     width: 200px;
-    float: left;
 }
 
 material-spinner {

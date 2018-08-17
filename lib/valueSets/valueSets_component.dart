@@ -8,16 +8,15 @@ import 'package:untitled2/_services/codedConcept_service.dart';
 import 'package:angular/angular.dart';
 import 'package:untitled2/_services/category_service.dart';
 import 'package:untitled2/_services/code_system.service.dart';
-import 'package:untitled2/valueSets/valueSets_component.dart';
 
 
 // AngularDart info: https://webdev.dartlang.org/angular
 // Components info: https://webdev.dartlang.org/components
 
 @Component(
-  selector: 'my-app',
-  styleUrls: ['app_component.css'],
-  templateUrl: 'app_component.html',
+  selector: 'value-sets',
+  styleUrls: ['valueSets_component.css'],
+  templateUrl: './valueSets_component.html',
     directives: [
       materialInputDirectives,
       MaterialCheckboxComponent,
@@ -29,23 +28,21 @@ import 'package:untitled2/valueSets/valueSets_component.dart';
       NgFor,
       NgIf,
       coreDirectives,
-      formDirectives,
-      ValueSetsComponent
+      formDirectives
     ],
   providers: [CategoryService, CodeSystemService, CodedConceptService]
 )
-class AppComponent implements OnInit {
+class ValueSetsComponent implements OnInit {
   final CategoryService _categoryService;
   final CodeSystemService _codeSystemService;
   final CodedConceptService _codedConceptService;
 
-  final List<String> tabLabels = ['Value Sets', 'About'];
   List<Category> _categories = [];
   List<CodeSystem> _codeSystems = [];
   List<CodedConcept> codedConcepts = [];
   List<CodedConcept> bayStateCodedConcepts = [];
 
-  AppComponent(
+  ValueSetsComponent(
       this._categoryService,
       this._codeSystemService,
       this._codedConceptService
